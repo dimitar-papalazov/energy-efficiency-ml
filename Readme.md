@@ -9,4 +9,4 @@
 
 ## Model training
 
-Model training is not required, if you want to do it, run "python model/script.py" from root folder
+Model training is not required, if you want to do it, run "python server/model.py" from root folder

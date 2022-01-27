@@ -11,12 +11,14 @@ heating_score = 0.830290529142604
 
 
 def predict_heating(x): 
+  heating_lr_filename = './server/model/heating_lr.sav'
   x = np.array(x).reshape(1, -1)
   model = joblib.load(heating_lr_filename)
   return model.predict(x)[0]
 
 
 def predict_cooling(x): 
+  cooling_lr_filename = './server/model/cooling_lr.sav'
   x = np.array(x).reshape(1, -1)
   model = joblib.load(cooling_lr_filename)
   return model.predict(x)[0]
@@ -32,7 +34,7 @@ def get_heating_score():
 
 if __name__ == "__main__":
   print('---read excel file---')
-  df = pd.read_excel('./model/ENB2012_data.xlsx')
+  df = pd.read_excel('./server/model/ENB2012_data.xlsx')
 
   print('---get target columns---')
   y1 = df['Y1']
@@ -55,8 +57,8 @@ if __name__ == "__main__":
 
 
   print('---saving models---')
-  heating_lr_filename = './model/heating_lr.sav'
-  cooling_lr_filename = './model/cooling_lr.sav'
+  heating_lr_filename = './server/model/heating_lr.sav'
+  cooling_lr_filename = './server/model/cooling_lr.sav'
   joblib.dump(heating_lr, heating_lr_filename)
   joblib.dump(cooling_lr, cooling_lr_filename)
 
